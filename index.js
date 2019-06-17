@@ -61,6 +61,7 @@ renderOverviewHTML = (laptopArr, overviewhtml, cardhtml)=> {
         output = output.replace('{%PRODUCTNAME%}',laptop.productName);
         output = output.replace('{%SCREEN%}',laptop.screen);
         output = output.replace('{%CPU%}',laptop.cpu);
+        output = output.replace('{%HREF%}',`/laptop?id=${laptop.id}`);
         return output;
     });
     return overviewhtml.replace('{%CARDS%}',cards.join(''));  
