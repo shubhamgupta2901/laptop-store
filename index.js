@@ -6,7 +6,9 @@ const url = require('url');
 //Accessing data.json file from file system and parsing it to a javascript object
 //In nodejs there are some operations which have both synchronus as well as asynchronus methods avaialable  like reading a file from filesystem
 // A synchronous method is blocking that means all the work ahead it will be blocked till the work of synchronous method is finished.  This will block other users too.
-// While asynchronous method will keep on working in background and will do invoke a callback function which we pass once it is finished
+// While asynchronous method will keep on working in background and will invoke a callback function which we pass once it is finished
+//The idea behind reading the file synchronously is that this rile read happens only once when the server is started.
+//While in methods accessible by multiple clients like business logic of routes handling, we need to use async methods so that other users are not blocked while one of the users is performing such an action.
 const json = fs.readFileSync(`${__dirname}/data/data.json`, 'utf-8');
 const laptopData = JSON.parse(json);
 
@@ -18,7 +20,7 @@ const server = http.createServer((request, response)=>{
     const pathname = url.parse(request.url, true).pathname;
     const id = url.parse(request.url,true).query.id;
     console.log(pathname);
-    //Routing: we respond in different ways to different URLs. Its important to note here is that nodejs treats all the images as requests as well so we need to route them as well.
+    //Routing: we respond in different ways to different URLs. Its important to note here is that nodejs treats all the images used in the html as requests, so we need to route them as well.
     if(pathname === '/products' || pathname === '/'){
         response.writeHead(200, {'Content-type': 'text/html'})
         fs.readFile(`${__dirname}/templates/template_overview.html`, 'utf-8',(err, data)=>{
