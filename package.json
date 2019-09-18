@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/shubhamgupta2901/nodejs-laptop-store/issues"
   },
-  "homepage": "https://github.com/shubhamgupta2901/nodejs-laptop-store#readme"
+  "homepage": "https://github.com/shubhamgupta2901/nodejs-laptop-store#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.0.4"
+  }
 }
