@@ -113,10 +113,10 @@ h1::before {
     z-index: 1;
     border: 2px solid white;
     border-radius: 100rem;
-    padding: 0 2rem;
+    padding: 0 1rem;
     transition: all .3s;
     display: flex;
-    align-items: center;
+    align-items: center;    
 }
 
 .laptop__back:hover,

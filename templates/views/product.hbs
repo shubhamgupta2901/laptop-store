@@ -14,15 +14,15 @@
     <div class="container">
         <h1>The Laptop Store!</h1>
         <figure class="laptop">
-            <p class="laptop__price">{{price}}</p>
-            <a href="/products" class="laptop__back"><span class="emoji-left">👈</span>Back</a>
+            <p class="laptop__price">${{price}}</p>
+            <a href="/products" class="laptop__back">Back</a>
             <div class="laptop__hero">
                 <img src="/img/{{image}}" alt="{{productName}}" class="laptop__img">
             </div>
             <h2 class="laptop__name">{{productName}}</h2>
             <div class="laptop__details">
                 <p><span class="emoji-left">🖥</span> {{screen}}</p>
-                <p><span class="emoji-left">🧮</span> {{cpu}}</p>
+                <p><span class="emoji-left">🚄</span> {{cpu}}</p>
                 <p><span class="emoji-left">💾</span> {{storage}}</p>
                 <p><span class="emoji-left">📦</span> {{ram}}</p>
             </div>
@@ -31,7 +31,7 @@
             </p>
             <p class="laptop__source">Source: <a href="https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361"
                     target="_blank">https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361</a></p>
-            <a href="#" class="laptop__link">Buy now for {{price}} <span class="emoji-right">🥳 😍</span></a>
+            <a href="#" class="laptop__link">Buy now for ${{price}}</a>
         </figure>
     </div>
 </body>

@@ -33,11 +33,8 @@ const loadData = (callback)=>{
     
 }
 
-app.get('',(req,res)=>{
-    res.send('Laptop Store')
-})
-
-app.get('/products', (req,res) =>{
+//Single routing handler for multiple routes
+app.get(['','/products'], (req,res) =>{
     loadData((data)=> res.render('overview', {products:data}));
     // res.render('overview',{products: products});
 });
@@ -52,7 +49,6 @@ app.get('/product/:id',async (req, res)=>{
         const data = JSON.parse(dataJson);
         const product = data.find(item => item.id === req.params.id);
         res.render('product',product);
-        
     })
 })
 
