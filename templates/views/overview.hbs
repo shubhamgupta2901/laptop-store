@@ -14,7 +14,9 @@
     <div class="container">
         <h1>The Laptop Store!</h1>
         <div class="cards-container">
-            
+            {{#each products}}
+                <li>{{>product}}</li>
+            {{/each}}
         </div>
     </div>
 </body>
