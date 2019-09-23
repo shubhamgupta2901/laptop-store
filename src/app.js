@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const hbs = require('hbs');
+const fs = require('fs');
 
 
 const publicDirectoryPath = path.join(__dirname, '../public');
@@ -75,16 +76,40 @@ const laptops = [
         "price": "1499",
         "description": "While it may not have the best keyboard in the world, the Samsung Notebook 9 is still one of the best laptops you can buy in 2018. Packed with more horsepower than some MacBook Pros,but at a much lower price, Samsung has crafted a laptop that has just as much substance as it does style. Plus, on top of its killer specs, it’s lightweight and thin, making this one of the most portable 15-inch laptops you can buy today."
     }
-]
+];
+
+const loadData = (callback)=>{
+    fs.readFile('src/data.json',(error, dataBuffer)=> {
+        if(error){
+            console.log(error);
+            callback([]);
+        }
+        const dataJson = dataBuffer.toString();
+        callback(JSON.parse(dataJson));
+    })
+    
+}
 
 app.get('',(req,res)=>{
     res.send('Laptop Store')
 })
 
 app.get('/products', (req,res) =>{
-    res.render('overview',{products: laptops});
+    loadData((data)=> res.render('overview', {products:data}));
+    // res.render('overview',{products: products});
 });
 
+app.get('/product/:id',async (req, res)=>{
+    fs.readFile('src/data.json',(error, dataBuffer)=> {
+        if(error){
+            console.log(error);
+            return res.send(error);
+        }
+        const dataJson = dataBuffer.toString();
+        res.send(JSON.parse(dataJson));
+        
+    })
+})
 
 app.listen(3000, ()=>{
     console.log('Server is up on port 3000');
