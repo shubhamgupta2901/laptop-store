@@ -4,7 +4,8 @@
   "description": "Node js project to showcase the catalogue of laptops available in a store and review them",
   "main": "app.js",
   "scripts": {
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js -e js,hbs"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "hbs": "^4.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
   }
 }
